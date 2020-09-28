@@ -1,5 +1,4 @@
 import engine.gfx.images.Image;
-import engine2d.Mat3x3;
 import engine2d.Transform2D;
 import engine2d.Renderer2D;
 
@@ -43,21 +42,8 @@ public class BouncingImage {
     }
 
     public void drawYourself(Renderer2D r) {
-        Mat3x3 matRot = new Mat3x3();
-        Mat3x3 matScale = new Mat3x3();
-        Mat3x3 matRotScale;
-        Mat3x3 offsetImage = new Mat3x3();
-        Mat3x3 offsetScreen = new Mat3x3();
-        Mat3x3 scaledOffsetImage;
-        Mat3x3 transform;
-
-        matScale.setAsScale(scale, scale);
-        matRot.setAsRotate(rotationAngle);
-        matRotScale = Transform2D.multiply(matRot, matScale);
-        offsetImage.setAsTranslate(- image.getW() / 2.0f, - image.getH() / 2.0f);
-        scaledOffsetImage = Transform2D.multiply(offsetImage, matRotScale);
-        offsetScreen.setAsTranslate(posX, posY);
-        transform = Transform2D.multiply(scaledOffsetImage, offsetScreen);
+        Transform2D transform = new Transform2D();
+        transform.scale(scale, scale).translate(- image.getW() / 2.0f, - image.getH() / 2.0f).rotate(rotationAngle).translate(posX, posY);
         r.drawImage(image, transform);
     }
 

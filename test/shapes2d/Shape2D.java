@@ -32,7 +32,6 @@ public abstract class Shape2D implements Drawable, SelectableByMouse {
      */
     protected float posY;
 
-
     /**
      * El color de la figura. Se utiliza un código hexadecimal para
      * representar el color.

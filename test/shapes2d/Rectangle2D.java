@@ -3,7 +3,6 @@ package shapes2d;
 import engine.gfx.Renderer;
 import engine.vectors.points3d.Vec3df;
 import engine2d.Mat3x3;
-import engine2d.Transform2D;
 
 public class Rectangle2D extends Shape2D {
 
@@ -45,7 +44,6 @@ public class Rectangle2D extends Shape2D {
         super(posX, posY, color);
 
         Mat3x3 shapeOffset = new Mat3x3();
-        shapeOffset.setAsTranslate(- posX / 2.0f, - posY / 2.0f);
         for ( int i = 0; i < NUM_POINTS; i++ ) {
             try {
                 originalPoints[i] = points[i];
@@ -69,26 +67,18 @@ public class Rectangle2D extends Shape2D {
 
     public void applyTransformation(Mat3x3 mat3x3) {
         Mat3x3 shapeOffset = new Mat3x3();
-        shapeOffset.setAsTranslate(- posX / 2.0f, - posY / 2.0f);
-        calculateFinalPoints(Transform2D.multiply(mat3x3, shapeOffset));
     }
 
     public void translate(float offsetX, float offsetY) {
         Mat3x3 translation = new Mat3x3();
-        translation.setAsTranslate(offsetX, offsetY);
-        applyTransformation(translation);
     }
 
     public void rotate(float angleRad) {
         Mat3x3 rotation = new Mat3x3();
-        rotation.setAsRotate(angleRad);
-        applyTransformation(rotation);
     }
 
     public void scale(float scaleX, float scaleY) {
         Mat3x3 scale = new Mat3x3();
-        scale.setAsTranslate(scaleX, scaleY);
-        applyTransformation(scale);
     }
 
     @Override
