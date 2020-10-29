@@ -1,3 +1,5 @@
+package affinetransformations;
+
 import engine.AbstractGame;
 import engine.GameContainer;
 import engine.gfx.Renderer;

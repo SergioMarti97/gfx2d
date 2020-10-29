@@ -1,9 +1,10 @@
+package shapes;
+
 import engine.AbstractGame;
 import engine.GameContainer;
 import engine.gfx.Renderer;
 import engine2d.Renderer2D;
 import engine2d.Transform2D;
-import shapes.Shape;
 
 public class TestShapes extends AbstractGame {
 
@@ -32,7 +33,7 @@ public class TestShapes extends AbstractGame {
     public void render(GameContainer gameContainer, Renderer renderer) {
         Transform2D transform2D = new Transform2D();
         transform2D.scale(100, 100).translate(-50, -50).rotate(rotation).translate(gameContainer.getInput().getMouseX(), gameContainer.getInput().getMouseY() );
-        renderer2D.drawShape(shape, transform2D);
+        renderer2D.drawShape(shape, transform2D, 0xffffffff);
     }
 
     public static void main(String[] args) {
